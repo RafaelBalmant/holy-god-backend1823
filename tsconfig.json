@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src", // Base URL para resolver os caminhos
+    "paths": {
+      "@interfaces/*": ["interfaces/*"],
+    },
+    "outDir": "./dist", // Diretório de saída para os arquivos compilados
+    "rootDir": "./src", // Diretório raiz dos arquivos TypeScript
+    "target": "ES6",
+    "module": "commonjs",
+    "strict": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
