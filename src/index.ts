@@ -1,10 +1,19 @@
-const hello: string = 'Hello, World!';
+const tsConfigPaths = require('tsconfig-paths');
 
-console.log(hello);
+const baseUrl = './dist';
+const tsConfigPath = './tsconfig.json';
+const tsConfig = tsConfigPaths.loadConfig(tsConfigPath);
 
+if ("paths" in tsConfig) {
+    tsConfigPaths.register({
+        baseUrl,
+        paths: tsConfig.paths
+    });
+} else {
+    throw new Error("Error to load tsconfig");
+}
 
-const log = (message: string): void => {
-    console.log(message);
-};
+import container from "./container";
 
-log('Hello, World!dddddd');
+container();
+

@@ -1,7 +1,7 @@
 import IUserRepository from '@interfaces/repository/userRepository.interface';
 
 
-class UserRepository implements IUserRepository {
+export class UserRepository implements IUserRepository {
     users: [];
     constructor() {
         this.users = [];
@@ -14,4 +14,3 @@ class UserRepository implements IUserRepository {
     }
 }
 
-export default UserRepository;

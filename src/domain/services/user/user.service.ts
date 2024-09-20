@@ -2,7 +2,7 @@ import IUserServiceInterface from '@interfaces/services/userService.interface';
 import IUserRepository from '@interfaces/repository/userRepository.interface';
 
 
-class UserService implements IUserServiceInterface {
+export class UserService implements IUserServiceInterface {
     userRepo: IUserRepository;
     constructor(private userRepository: IUserRepository) {
         this.userRepo = userRepository;
@@ -16,5 +16,3 @@ class UserService implements IUserServiceInterface {
         return this.userRepository.getUserById(id);
     }
 }
-
-export default UserService;
