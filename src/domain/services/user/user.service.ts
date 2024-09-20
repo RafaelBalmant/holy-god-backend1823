@@ -1,5 +1,5 @@
-import IUserServiceInterface from '@interfaces/services/user.interface';
-import IUserRepository from '@interfaces/repository/user.repository';
+import IUserServiceInterface from '@interfaces/services/userService.interface';
+import IUserRepository from '@interfaces/repository/userRepository.interface';
 
 
 class UserService implements IUserServiceInterface {
@@ -16,3 +16,5 @@ class UserService implements IUserServiceInterface {
         return this.userRepository.getUserById(id);
     }
 }
+
+export default UserService;

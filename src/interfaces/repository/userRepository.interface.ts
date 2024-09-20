@@ -1,4 +1,4 @@
-export default interface UserRepository {
+export default interface UserRepositoryInterface {
     createUser(user: any): any;
     getUserById(id: string): any;
 }

@@ -1,4 +1,4 @@
-import IUserRepository from '../../interfaces/repository/user.repository';
+import IUserRepository from '@interfaces/repository/userRepository.interface';
 
 
 class UserRepository implements IUserRepository {

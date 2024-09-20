@@ -3,6 +3,8 @@
     "baseUrl": "./src", // Base URL para resolver os caminhos
     "paths": {
       "@interfaces/*": ["interfaces/*"],
+      "@services/*": ["domain/services/*"],
+      "@repositories/*": ["repositories/*"],
     },
     "outDir": "./dist", // Diretório de saída para os arquivos compilados
     "rootDir": "./src", // Diretório raiz dos arquivos TypeScript
