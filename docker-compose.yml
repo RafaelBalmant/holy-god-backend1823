@@ -1,0 +1,49 @@
+version: '3'
+services:
+  node:
+    container_name: node
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/projects/node
+    ports:
+      - "3000:3000"
+    networks:
+      - node-network
+  db:
+    container_name: postgres
+    image: postgres
+    restart: always
+    # set shared memory limit when using docker-compose
+    shm_size: 128mb
+    environment:
+      POSTGRES_USER: 'root'
+      POSTGRES_PASSWORD: 'root'
+    ports:
+      - 5432:5432
+    networks:
+      - node-network
+  pgadmin:
+    container_name: pgadmin
+    user: root
+    image: dpage/pgadmin4:latest
+    restart: always
+    depends_on:
+      - db
+    environment:
+      POSTGRES_USER: 'root'
+      POSTGRES_PASSWORD: 'root'
+      PGADMIN_DEFAULT_EMAIL: 'root@root.com'
+      PGADMIN_DEFAULT_PASSWORD: 'root'
+    ports:
+      - 8080:80
+    volumes:
+      - ./data/pgadmin:/var/lib/pgadmin
+    networks:
+      - node-network
+networks:
+  node-network:
+    driver: bridge

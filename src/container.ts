@@ -6,8 +6,9 @@ import * as winston from "winston";
 const logger = winston.createLogger({
     level: 'info',
     format: winston.format.json(),
-    defaultMeta: { service: 'user-service' },
+    defaultMeta: { service: 'MAIN CONTAINER' },
     transports: [
+        new winston.transports.Console(),
         new winston.transports.File({ filename: 'error.log', level: 'error' }),
         new winston.transports.File({ filename: 'combined.log' }),
     ],
@@ -22,9 +23,7 @@ const services = {
 }
 
 const container = () => {
-
-    console.log('Initialized logger');
-
+    logger.info('Container initialized');
     return {
         services
     }

@@ -15,5 +15,5 @@ if ("paths" in tsConfig) {
 
 import container from "./container";
 
-container();
+export default container();
 
