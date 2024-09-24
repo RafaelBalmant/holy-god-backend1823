@@ -1,4 +1,4 @@
-import tsConfigPaths from 'tsconfig-paths'
+const tsConfigPaths = require('tsconfig-paths')
 
 const baseUrl = './dist'
 const tsConfigPath = './tsconfig.json'
@@ -13,6 +13,8 @@ if ('paths' in tsConfig) {
     throw new Error('Error to load tsconfig')
 }
 
+console.log('test')
+
 import container from './container'
 
-export default container()
+container()
