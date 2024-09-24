@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "tsc --watch & nodemon tsconfig-paths/register dist/index.js",
+    "docker:up": "docker compose up --watch",
+    "dev": "tsc --watch & node tsconfig-paths/register dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -17,6 +18,7 @@
     "typescript": "5.6.2"
   },
   "dependencies": {
+    "sequelize": "^6.37.3",
     "winston": "3.14.2"
   }
 }

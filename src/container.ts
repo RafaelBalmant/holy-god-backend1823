@@ -1,32 +1,30 @@
-import { UserService } from "@services/user/user.service";
-import { UserRepository } from "@repositories/user/user.repository";
-import * as winston from "winston";
+import { UserService } from '@services/user.service'
+import { UserRepository } from '@repositories/user.repository'
+import { UserModel } from '@models/user.model'
+import { Sequelize } from 'sequelize'
 
+const sequelize = new Sequelize('postgres://root:root@localhost:5432/holygod')
 
-const logger = winston.createLogger({
-    level: 'info',
-    format: winston.format.json(),
-    defaultMeta: { service: 'MAIN CONTAINER' },
-    transports: [
-        new winston.transports.Console(),
-        new winston.transports.File({ filename: 'error.log', level: 'error' }),
-        new winston.transports.File({ filename: 'combined.log' }),
-    ],
-});
+const container = async () => {
+    try {
+        await sequelize.authenticate()
 
-const repositories = {
-    userRepository: new UserRepository()
+        const models = {
+            userModel: new UserModel(sequelize),
+        }
+
+        const repositories = {
+            userRepository: new UserRepository(models.userModel),
+        }
+
+        const services = {
+            userService: new UserService(repositories.userRepository),
+        }
+
+        return {
+            services,
+        }
+    } catch (e) {}
 }
 
-const services = {
-    userService: new UserService(repositories.userRepository)
-}
-
-const container = () => {
-    logger.info('Container initialized');
-    return {
-        services
-    }
-};
-
-export default container;
+export default container

@@ -9,7 +9,8 @@
     "paths": {
       "@interfaces/*": ["interfaces/*"],
       "@services/*": ["domain/services/*"],
-      "@repositories/*": ["repositories/*"]
+      "@repositories/*": ["infra/repositories/*"],
+      "@models/*": ["infra/models/*"]
     },
     "outDir": "./dist",
     "rootDir": "./src"
