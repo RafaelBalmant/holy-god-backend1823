@@ -1,6 +1,8 @@
 import { Model } from 'sequelize'
 
-export default interface UserModelInterface {
+interface UserModelInterface {
     id: number
     email: String
 }
+
+export default Model<UserModelInterface>

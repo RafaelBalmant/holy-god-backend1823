@@ -1,11 +1,10 @@
-import UserModelInterface from '@interfaces/models/userModel.interface'
 import IUserRepository from '@interfaces/repositories/userRepository.interface'
-import { Model } from 'sequelize'
+import { UserModel } from '@models/user.model'
 
 export class UserRepository implements IUserRepository {
     users: []
-    model: Model;
-    constructor(model: Model) {
+    model: UserModel
+    constructor(model: UserModel) {
         this.model = model
         this.users = []
     }
